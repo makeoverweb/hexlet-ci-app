@@ -1,0 +1,18 @@
+# Name of workflow
+name: NodeJS
+
+# Trigger the workflow on push or pull request
+on:
+  - push
+  - pull_request
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v2
+      - run: make setup
+      - run: make tests
+      - run: make linter
